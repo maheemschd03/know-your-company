@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Know Your Company</title>
+  <link rel="stylesheet" href="static/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+NZ+Guides&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header>
+    <h1>KNOW YOUR COMPANY</h1>
+  </header>
+
+  <div class="about">
+    <h2 id = 'about'><span>⟨</span> About <span>⟩</span></h2>
+    <p>
+      Welcome to <strong>Know Your Company</strong>, your go-to platform for
+      discovering essential details about any organization. Whether you're
+      researching for a job opportunity, evaluating a business partnership, or
+      simply curious, our application provides a comprehensive overview to
+      meet your needs.
+    </p>
+    <ul>
+      <li>
+        <strong>Company Overview</strong>: Gain a snapshot of the company’s
+        profile and key details.
+      </li>
+      <li>
+        <strong>Mission, Vision, and Values</strong>: Understand what drives
+        the organization and its goals.
+      </li>
+      <li>
+        <strong>Products & Services</strong>: Explore what the company offers
+        to its customers.
+      </li>
+      <li>
+        <strong>Financial Health</strong>: Assess the organization’s financial
+        stability and growth potential.
+      </li>
+      <li>
+        <strong>Competitive Advantage</strong>: Learn what sets the company
+        apart in the industry.
+      </li>
+      <li>
+        <strong>Leadership</strong>: Get to know the people steering the
+        organization.
+      </li>
+      <li>
+        <strong>Company Culture</strong>: Discover the work environment and
+        organizational ethos.
+      </li>
+      <li>
+        <strong>Recent News</strong>: Stay updated on the company’s latest
+        developments.
+      </li>
+      <li>
+        <strong>Career Growth Opportunities</strong>: Evaluate potential roles
+        and growth paths.
+      </li>
+      <li>
+        <strong>Hiring Process</strong>: Understand how to start a career with
+        the company.
+      </li>
+    </ul>
+    <p>
+      Empower your decisions with <strong>Know Your Company</strong>, making
+      your research seamless and impactful.
+    </p>
+  </div>
+
+  <div class="main">
+    <form id="searchForm" method="post">
+      <p class="inst">Enter the name of the company <span>-></span></p>
+      <br />
+      <input type="text" name="company_name" placeholder="e.g., SpaceX" />
+      <div class="button-group">
+        <button type="button" class="btn btn-info" onclick="submitForm('/search')">
+          Fetch Info
+        </button>
+        <button type="button" class="btn btn-news" onclick="submitForm('/news')">
+          Find News
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function submitForm(action) {
+      const form = document.getElementById('searchForm');
+      form.action = action;
+      form.submit();
+    }
+  </script>
+
+  <footer id="footer">
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Know Your Company</h3>
+        <p>
+          Your go-to platform for discovering essential details about any
+          organization.
+        </p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact Us</h4>
+        <p>
+          Email:
+          <a href="mailto:support@knowyourcompany.com">support@knowyourcompany.com</a>
+        </p>
+        <p>Phone: +1 234 567 890</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Know Your Company. All rights reserved.</p>
+    </div>
+  </footer>
+</body>
+
+</html>
