@@ -5,58 +5,85 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workflow Progress</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #1e1e2e, #3b82f6);
-            font-family: 'Montserrat', sans-serif;
-        }
-        .stage-box {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            padding: 1.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            width: 100%;
-            max-width: 300px;
-        }
-        .stage-box.active {
-            background: rgba(255, 127, 127, 0.2);
-            border-color: #ff7f7f;
-        }
-        .stage-box.completed {
-            background: rgba(59, 130, 246, 0.2);
-            border-color: #3b82f6;
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.7), 0 0 30px rgba(255, 127, 127, 0.5);
-            animation: glow 1.5s ease-in-out infinite alternate;
-        }
-        @keyframes glow {
-            0% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.7), 0 0 30px rgba(255, 127, 127, 0.5); }
-            100% { box-shadow: 0 0 25px rgba(59, 130, 246, 1), 0 0 40px rgba(255, 127, 127, 0.7); }
-        }
-        .stage-box:not(:last-child)::after {
-            content: '↓';
-            position: absolute;
-            color: #ff7f7f;
-            font-size: 1.5rem;
-            left: 50%;
-            bottom: -2rem;
-            transform: translateX(-50%);
+            background: linear-gradient(135deg, #f0f9ff, #ffffff);
+            font-family: 'Roboto', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .container {
-            transition: opacity 0.5s ease;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            max-width: 400px;
+            transition: opacity 0.6s ease;
         }
         .container.fade-out {
             opacity: 0;
         }
+        h1 {
+            font-weight: 300;
+            color: #6b7280;
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .stage-box {
+            background: rgba(240, 249, 255, 0.8);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            width: 100%;
+            max-width: 280px;
+            color: #6b7280;
+            position: relative;
+        }
+        .stage-box.active {
+            background: #e0f2fe;
+            box-shadow: 0 0 10px rgba(56, 189, 248, 0.2);
+            animation: pulse 1.5s infinite;
+        }
+        .stage-box.completed {
+            background: #ecfdf5;
+            box-shadow: 0 0 8px rgba(167, 243, 208, 0.2);
+        }
+        .stage-box:not(:last-child)::after {
+            content: '↓';
+            position: absolute;
+            color: #bae6fd;
+            font-size: 1.25rem;
+            left: 50%;
+            bottom: -1.75rem;
+            transform: translateX(-50%);
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        .stage-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
     </style>
 </head>
-<body class="flex items-center justify-center min-h-screen">
-    <div class="container bg-gray-900 bg-opacity-80 rounded-2xl shadow-2xl p-8 max-w-md w-full">
-        <h1 class="text-3xl font-bold text-white mb-8 text-center">Working on it.....</h1>
-        <div class="flex flex-col items-center gap-6">
+<body>
+    <div class="container">
+        <div class="stage-container">
             <div class="stage-box active">Fetching Info</div>
             <div class="stage-box">Cleaning Content</div>
             <div class="stage-box">Generating HTML</div>
@@ -77,7 +104,7 @@
             { message: "HTML code was validated.", index: 3 },
             { message: "Styling HTML with CSS...", index: 4 },
             { message: "HTML code was styled.", index: 4 },
-            { message: "Styling HTML with CSS...", index: 5 }, // Second UI_Agent call
+            { message: "Styling HTML with CSS...", index: 5 },
             { message: "HTML code was styled.", index: 5 },
             { message: "Finalizing HTML output...", index: 6 },
             { message: "Final cleanup completed.", index: 6 }
@@ -112,7 +139,7 @@
                         container.classList.add('fade-out');
                         setTimeout(() => {
                             window.location.href = data.redirect;
-                        }, 500); // Match fade-out duration
+                        }, 600);
                     } else {
                         setTimeout(checkProgress, 1000);
                     }
